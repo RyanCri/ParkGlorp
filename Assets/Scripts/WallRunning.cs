@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WallRunning : MonoBehaviour
@@ -11,7 +12,11 @@ public class WallRunning : MonoBehaviour
     public float maxWallRunTime;
     private float wallRunTimer;
 
+    public float wallJumpUpForce;
+    public float wallJumpSideForce;
+
     [Header("Input")]
+    public KeyCode jumpKey = KeyCode.Space;
     private float horizontalInput;
     private float verticalInput;
 
@@ -68,11 +73,12 @@ public class WallRunning : MonoBehaviour
         // State 1 - Wallrunning
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround())
         {
-            print("start");
-
             // start wallrun
             if (!pm.wallrunning)
                 StartWallRun();
+
+            if (Input.GetKeyDown(jumpKey)) WallJump();
+
         }
 
         else 
@@ -96,12 +102,30 @@ public class WallRunning : MonoBehaviour
 
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
 
+        if((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
+            wallForward = -wallForward;
+
         // forward force
         rb.AddForce(wallForward * wallRunForce, ForceMode.Force);
+
+        // push to wall force
+        if(!(wallLeft && horizontalInput > 0) && !(wallRight && horizontalInput < 0))
+            rb.AddForce(-wallNormal * 100, ForceMode.Force);
     }
 
     private void StopWallRun()
     {
         pm.wallrunning = false;
+    }
+
+    private void WallJump()
+    {
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
+
+        // reset y + add force
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 }
