@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 7;
+    public float wallRunSpeed;
+
+    public bool wallrunning;
 
     public float groundDrag;
 
@@ -37,6 +40,15 @@ public class PlayerMovement : MonoBehaviour
     
     Rigidbody rb;
 
+    // stores current state
+    public MovementState state;
+    public enum MovementState
+    {
+        walking,
+        wallrunning,
+        air
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
         MyInput();
+        SpeedControl();
+        StateHandler();
 
         // handle drag
         if (grounded)
@@ -56,13 +70,12 @@ public class PlayerMovement : MonoBehaviour
         else 
             rb.drag = 0;
 
-        print(rb.velocity);
+        // print(rb.velocity);
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
-        SpeedControl();
     }
 
     private void MyInput()
@@ -78,6 +91,28 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+
+    private void StateHandler()
+    {
+        // wallrunning
+        if(wallrunning)
+        {
+            state = MovementState.wallrunning;
+            moveSpeed = wallRunSpeed;
+
+            print("WALLRUINNGIN");
+        }
+        // Mode - walking
+        if(grounded)
+        {
+            state = MovementState.walking;
+        }
+        // air
+        else
+        {
+            state = MovementState.air;
         }
     }
 
