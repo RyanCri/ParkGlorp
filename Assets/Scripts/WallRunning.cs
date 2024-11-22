@@ -71,19 +71,20 @@ public class WallRunning : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         
         // State 1 - Wallrunning
-        if((wallLeft || wallRight) && verticalInput > 0 && AboveGround())
+        if((wallLeft || wallRight) && Input.GetKey(jumpKey) && AboveGround())
         {
             // start wallrun
             if (!pm.wallrunning)
                 StartWallRun();
 
-            if (Input.GetKeyDown(jumpKey)) WallJump();
+            
 
         }
 
         else 
-        {
+        {            
             if(pm.wallrunning)
+                if (Input.GetKeyUp(jumpKey)) WallJump();
                 StopWallRun();
         }
     }
