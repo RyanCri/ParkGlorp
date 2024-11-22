@@ -17,8 +17,11 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump=true;
 
+    public float airDashForce;
+
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode airDashKey = KeyCode.Mouse1;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -32,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     bool exitingSlope = true;
 
     public Transform orientation;
+    public Transform mosa;
 
     float horizontalInput;
     float verticalInput;
@@ -91,6 +95,13 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
             Invoke(nameof(ResetJump), jumpCooldown);
+        }
+
+        // when to airdash
+        if(Input.GetKeyDown(airDashKey) && !grounded)
+        {
+            AirDash();
+
         }
     }
 
@@ -171,6 +182,15 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         exitingSlope = false;
+        
+    }
+
+    private void AirDash()
+    {
+        // reset y velocity
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(mosa.forward * airDashForce, ForceMode.VelocityChange);
         
     }
 

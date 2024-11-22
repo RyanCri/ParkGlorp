@@ -1992,13 +1992,16 @@ MonoBehaviour:
   jumpForce: 8
   jumpCooldown: 0.25
   airMultiplier: 0.4
+  airDashForce: 200
   jumpKey: 32
+  airDashKey: 324
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
   maxSlopeAngle: 40
   orientation: {fileID: 775451173}
+  mosa: {fileID: 1152974999}
   state: 0
 --- !u!114 &1118436479
 MonoBehaviour:
