@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 7;
+    public float walkSpeed = 7;
     public float wallRunSpeed;
+    public float dashSpeed;
 
     public bool wallrunning;
 
@@ -17,16 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public float airMultiplier;
     bool readyToJump=true;
 
-    public float airDashForce;
-
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode airDashKey = KeyCode.Mouse1;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
     
 
     [Header("Slope Handling")]
@@ -50,8 +49,13 @@ public class PlayerMovement : MonoBehaviour
     {
         walking,
         wallrunning,
+        dashing,
         air
     }
+
+    public bool dashing;
+
+    // START OF CODE
 
     private void Start()
     {
@@ -74,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         else 
             rb.drag = 0;
 
-        // print(rb.velocity);
+        // print(rb.velocity.magnitude);
     }
 
     private void FixedUpdate()
@@ -97,16 +101,29 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
 
-        // when to airdash
-        if(Input.GetKeyDown(airDashKey) && !grounded)
-        {
-            AirDash();
 
-        }
     }
 
     private void StateHandler()
     {
+        // Dashing
+        if(dashing)
+        {
+            state = MovementState.dashing;
+            moveSpeed = dashSpeed;
+        }
+        else if(grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+        // air
+        else
+        {
+            state = MovementState.air;
+            moveSpeed = walkSpeed;
+        }
+
         // wallrunning
         if(wallrunning)
         {
@@ -116,15 +133,7 @@ public class PlayerMovement : MonoBehaviour
             print("WALLRUINNGIN");
         }
         // Mode - walking
-        if(grounded)
-        {
-            state = MovementState.walking;
-        }
-        // air
-        else
-        {
-            state = MovementState.air;
-        }
+        
     }
 
     private void MovePlayer()
@@ -182,15 +191,6 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
 
         exitingSlope = false;
-        
-    }
-
-    private void AirDash()
-    {
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        rb.AddForce(mosa.forward * airDashForce, ForceMode.VelocityChange);
         
     }
 
