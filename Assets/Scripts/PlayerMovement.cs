@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     public bool grounded;
-    
+    public bool dead;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         walking,
         wallrunning,
         dashing,
+        dead,
         air
     }
 

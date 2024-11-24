@@ -7,6 +7,7 @@ public class DeathPlane : MonoBehaviour
     [Header("References")]
     public Rigidbody rb;
     public PlayerMovement pm;
+    public Animator respawnAni;
     private MeshCollider deathPlane;
 
     private void Start()
@@ -16,8 +17,8 @@ public class DeathPlane : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
-        other.transform.parent.position = new Vector3(0, 0, 0);
+        // respawnAni.Play("RespawnClose");
+        pm.dead = true;
     }
 
     
