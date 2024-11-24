@@ -10,6 +10,7 @@ public class Dash : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement pm;
     private RigidbodyConstraints originalConstraints;
+    public ParticleSystem dashParticles;
 
     [Header("Dashing")]
     public float dashForce;
@@ -69,6 +70,8 @@ public class Dash : MonoBehaviour
 
         Vector3 forceToApply = mosa.forward * dashForce + mosa.up * dashUpwardForce;
 
+        dashParticles.Play();
+        
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);
 
