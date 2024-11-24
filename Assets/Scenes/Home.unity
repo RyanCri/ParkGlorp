@@ -7238,7 +7238,7 @@ MonoBehaviour:
   dashParticles: {fileID: 1047306800}
   boost: {fileID: 156791106}
   dashForce: 20
-  dashUpwardForce: 0
+  dashUpwardForce: 2
   dashDuration: 0.5
   dashCd: 1.5
   airDashKey: 324

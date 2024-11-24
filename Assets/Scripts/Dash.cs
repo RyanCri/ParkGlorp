@@ -48,10 +48,10 @@ public class Dash : MonoBehaviour
 
     private void MyInput()
     {
-        if(Input.GetKeyDown(airDashKey))
+        if(Input.GetKeyDown(airDashKey) && !pm.grounded)
             aiming = true;
 
-        if(Input.GetKeyUp(airDashKey))
+        if(Input.GetKeyUp(airDashKey) && aiming)
             AirDash();
     }
 
