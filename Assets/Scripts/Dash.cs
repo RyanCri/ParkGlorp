@@ -11,6 +11,7 @@ public class Dash : MonoBehaviour
     private PlayerMovement pm;
     private RigidbodyConstraints originalConstraints;
     public ParticleSystem dashParticles;
+    public AudioSource boost;
 
     [Header("Dashing")]
     public float dashForce;
@@ -71,7 +72,10 @@ public class Dash : MonoBehaviour
         Vector3 forceToApply = mosa.forward * dashForce + mosa.up * dashUpwardForce;
 
         dashParticles.Play();
-        
+
+        boost.pitch = Random.Range(0.7f, 1.3f);
+        boost.Play();
+
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);
 
