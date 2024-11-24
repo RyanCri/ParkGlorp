@@ -6,6 +6,7 @@ public class Respawn : MonoBehaviour
 {
     [Header("References")]
     public PlayerMovement pm;
+    public Rigidbody rb;
     private Animator respawnAni;
 
     private void Start()
@@ -26,9 +27,11 @@ public class Respawn : MonoBehaviour
 
     public void RespawnEnd()
     {
-        pm.transform.position = new Vector3(0, 0, 0);
+        rb.velocity = new Vector3(0, 0, 0);
+        pm.transform.position = new Vector3(0, 0.5f, 0);
         pm.dead = false;
         Invoke("RespawnOpen", 0.5f);
+        Debug.Log(pm.transform.position);
     }
 
     private void RespawnOpen()
