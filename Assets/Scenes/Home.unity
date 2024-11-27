@@ -1799,7 +1799,8 @@ PrefabInstance:
       value: HUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8260592250421755908, guid: 0cd2105283931154588b2a838cc42582, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cd2105283931154588b2a838cc42582, type: 3}
@@ -1811,6 +1812,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 62904744771450693, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 62904744771450693, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_Lens.m_SensorSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 507624890086290312, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1882,6 +1891,26 @@ PrefabInstance:
     - target: {fileID: 2048660032621787428, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
       propertyPath: m_Name
       value: ThePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4166318481320757236, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539556131743501119, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5539556131743501119, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_Lens.m_SensorSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671537183770550177, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671537183770550177, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: m_Lens.m_SensorSize.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7465709626102689893, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
       propertyPath: m_LocalRotation.w
