@@ -145,6 +145,8 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.air;
             moveSpeed = walkSpeed;
+
+            mimosaAnim.SetBool("isWallriding", false);
         }
 
         // wallrunning
@@ -152,6 +154,8 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.wallrunning;
             moveSpeed = wallRunSpeed;
+
+            mimosaAnim.SetBool("isWallriding", true);
 
             print("WALLRUINNGIN");
         }

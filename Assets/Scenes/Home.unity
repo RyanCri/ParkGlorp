@@ -6875,6 +6875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThePlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 2679662359333822385, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
+      propertyPath: mimosaAnim
+      value: 
+      objectReference: {fileID: 1844123432}
     - target: {fileID: 4102794896359743788, guid: 3dbd5a1f28a35a648a28b5f9c0ae24ed, type: 3}
       propertyPath: mimosa
       value: 
