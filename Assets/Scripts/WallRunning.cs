@@ -15,6 +15,8 @@ public class WallRunning : MonoBehaviour
     public float wallJumpUpForce;
     public float wallJumpSideForce;
 
+    public Animator mimosaAnim;
+
     [Header("Input")]
     public KeyCode jumpKey = KeyCode.Space;
     private float horizontalInput;
@@ -44,12 +46,25 @@ public class WallRunning : MonoBehaviour
     {
         CheckForWall();
         StateMachine();
+        AnimHandler();
     }
 
     private void FixedUpdate()
     {
         if(pm.wallrunning)
             WallRunningMovement();
+    }
+
+    private void AnimHandler()
+    {
+        if(pm.wallrunning && wallRight)
+        {
+            mimosaAnim.Play("metarig|wallriding_right");
+        }
+        else if(pm.wallrunning && wallLeft)
+        {
+            mimosaAnim.Play("metarig|wallriding_left");
+        }
     }
 
     private void CheckForWall()
