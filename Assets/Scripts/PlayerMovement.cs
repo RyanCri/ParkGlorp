@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+    public Animator mimosaAnim;
     Vector3 moveDirection;
     
     Rigidbody rb;
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
         MyInput();
+        AnimHandler();
         SpeedControl();
         StateHandler();
 
@@ -103,6 +105,26 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+    }
+
+    private void AnimHandler()
+    {
+        if(grounded)
+        {
+            mimosaAnim.SetBool("isGrounded", true);
+            if(rb.velocity.magnitude > 2)
+            {
+                mimosaAnim.SetBool("isRunning", true);
+            }
+            else
+            {
+                mimosaAnim.SetBool("isRunning", false);
+            }
+        }
+        else
+        {
+            mimosaAnim.SetBool("isGrounded", false);
+        }
     }
 
     private void StateHandler()
@@ -185,6 +207,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        mimosaAnim.Play("metarig|jumping");
     }
 
     private void ResetJump()
