@@ -7,7 +7,10 @@ public class Kick : MonoBehaviour
     [Header("References")]
     public Transform orientation;
     public GameObject kickCollider;
+    public Collider kickCollisionBox;
     private PlayerMovement pm;
+    public LayerMask whatIsDestructible;
+    public LayerMask whatIsKick;
 
     [Header("Keybinds")]
     public KeyCode kickKey = KeyCode.Mouse0;
@@ -26,6 +29,17 @@ public class Kick : MonoBehaviour
     {
         if(Input.GetKeyDown(kickKey))
             KickAttack();
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        print(LayerMask.LayerToName(12));
+        print(collider.gameObject.layer);
+
+        if(collider.gameObject.layer == 12)
+        {
+            collider.gameObject.SetActive(false);
+        }
     }
 
     private void KickAttack()
