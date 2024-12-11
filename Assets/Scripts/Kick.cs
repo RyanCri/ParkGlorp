@@ -33,8 +33,6 @@ public class Kick : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        print(LayerMask.LayerToName(12));
-        print(collider.gameObject.layer);
 
         if(collider.gameObject.layer == 12)
         {
