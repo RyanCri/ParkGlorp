@@ -8,6 +8,7 @@ public class Respawn : MonoBehaviour
     public PlayerMovement pm;
     public Rigidbody rb;
     private Animator respawnAni;
+    public Vector3 respawnLocation = new(0, 0.5f, 0);
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class Respawn : MonoBehaviour
     public void RespawnEnd()
     {
         rb.velocity = new Vector3(0, 0, 0);
-        pm.transform.position = new Vector3(0, 0.5f, 0);
+        pm.transform.position = respawnLocation;
         pm.dead = false;
         Invoke("RespawnOpen", 0.5f);
         Debug.Log(pm.transform.position);

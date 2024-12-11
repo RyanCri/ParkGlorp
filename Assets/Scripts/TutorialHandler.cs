@@ -19,7 +19,8 @@ public class TutorialHandler : MonoBehaviour
             "Nice! Now try to combine air dashing and wall running to cross this gap.",
             "Excellent work! Now let's try kicking with <color=#7cff78><b>LEFT CLICK</b></color>. Take it out on that glass plane over there.",
             "Smashin'!",
-            "Okay, try navigate the rest of the training course with what you've learned. Good luck!"
+            "Okay, try navigate the rest of the training course with what you've learned. Good luck!",
+            "Checkpoint! If you fall down now, you'll respawn right back here"
         };
     
 
