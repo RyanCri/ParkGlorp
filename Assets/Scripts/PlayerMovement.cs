@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public bool grounded;
     public bool dead;
+    public bool kicking;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         wallrunning,
         dashing,
         dead,
+        kicking,
         air
     }
 
@@ -161,6 +163,17 @@ public class PlayerMovement : MonoBehaviour
         }
         // Mode - walking
         
+        // kick
+        if(kicking)
+        {
+            state = MovementState.kicking;
+
+            mimosaAnim.SetBool("isKicking", true);
+        }
+        else 
+        {
+            mimosaAnim.SetBool("isKicking", false);
+        }
     }
 
     private void MovePlayer()
