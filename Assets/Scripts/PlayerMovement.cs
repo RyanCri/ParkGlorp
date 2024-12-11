@@ -163,6 +163,17 @@ public class PlayerMovement : MonoBehaviour
         }
         // Mode - walking
         
+        // kick
+        if(kicking)
+        {
+            state = MovementState.kicking;
+
+            mimosaAnim.SetBool("isKicking", true);
+        }
+        else 
+        {
+            mimosaAnim.SetBool("isKicking", false);
+        }
     }
 
     private void MovePlayer()

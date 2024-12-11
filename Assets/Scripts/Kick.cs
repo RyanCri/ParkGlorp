@@ -44,9 +44,15 @@ public class Kick : MonoBehaviour
 
     private void KickAttack()
     {
-        kickCollider.SetActive(true);
         pm.kicking = true;
+        Invoke("KickBox", 0.5f);
         Invoke("KickEnd", 1.0f);
+    }
+
+    private void KickBox()
+    {
+        kickCollider.SetActive(true);
+
     }
 
     private void KickEnd()
