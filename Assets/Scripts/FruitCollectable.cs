@@ -6,15 +6,16 @@ public class FruitCollectable : MonoBehaviour
 {
 
     private int Fruit = 0;
-    
-    public void onTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
+        print("hello");
         Debug.Log("yo", other);
-        /*if (other.transform.tag == "Fruit")
+        if (other.transform.tag == "Fruit")
             {
             Fruit++;
             Debug.Log(Fruit);
             Destroy(other.gameObject);
-            }*/
+            }
     }
 }
