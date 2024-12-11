@@ -18,7 +18,8 @@ public class TutorialHandler : MonoBehaviour
             "Next is wallrunning. Hold <color=#7cff78><b>SPACE</b></color> while facing parallel a yellow wall and you can skate across it. Let go to jump",
             "Nice! Now try to combine air dashing and wall running to cross this gap.",
             "Excellent work! Now let's try kicking with <color=#7cff78><b>LEFT CLICK</b></color>. Take it out on that glass plane over there.",
-            "Smashin'!"
+            "Smashin'!",
+            "Okay, try navigate the rest of the training course with what you've learned. Good luck!"
         };
     
 
