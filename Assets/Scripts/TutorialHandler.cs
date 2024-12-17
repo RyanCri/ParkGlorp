@@ -14,7 +14,7 @@ public class TutorialHandler : MonoBehaviour
         {
             "Hello <color=#ff7700>Mimosa</color>! Welcome to the practice space station! Move with <color=#7cff78><b>WASD</b></color> and Jump with <color=#7cff78><b>SPACE</b></color>!",
             "You can Air Dash by using <color=#7cff78><b>RIGHT CLICK</b></color> while in the air. Hold the button down to aim!",
-            "Woo!",
+            "That glorp on the top left is your dash indicator. If it's there, you can air dash!",
             "Next is wallrunning. Hold <color=#7cff78><b>SPACE</b></color> while facing parallel a yellow wall and you can skate across it. Let go to jump",
             "Nice! Now try to combine air dashing and wall running to cross this gap.",
             "Excellent work! Now let's try kicking with <color=#7cff78><b>LEFT CLICK</b></color>. Take it out on that glass plane over there.",
