@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - cameraBarrier
   - 
   - 
   - whatIsKick
@@ -21,8 +21,8 @@ TagManager:
   - whatIsDestructible
   - 
   - 
-  - 
-  - 
+  - chatTrigger
+  - checkpointTrigger
   - 
   - 
   - 

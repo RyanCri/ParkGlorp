@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dash : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Dash : MonoBehaviour
     private RigidbodyConstraints originalConstraints;
     public ParticleSystem dashParticles;
     public AudioSource boost;
+    public GameObject dashHudIndi;
 
     [Header("Dashing")]
     public float dashForce;
@@ -42,16 +44,23 @@ public class Dash : MonoBehaviour
         if(aiming)
             Aim();
 
-        if(dashCdTimer > 0)
+        if(dashCdTimer > 0) {
             dashCdTimer -= Time.deltaTime;
+            dashHudIndi.SetActive(false);
+        }
+        else if (dashCdTimer <= 0) {
+            dashHudIndi.SetActive(true);
+
+        }
+            
     }
 
     private void MyInput()
     {
-        if(Input.GetKeyDown(airDashKey) && !pm.grounded)
+        if(Input.GetKeyDown(airDashKey) && !pm.grounded && dashCdTimer <= 0)
             aiming = true;
 
-        if(Input.GetKeyUp(airDashKey) && aiming)
+        if(Input.GetKeyUp(airDashKey) && aiming )
             AirDash();
     }
 
