@@ -14,7 +14,7 @@ public class handCamShake : MonoBehaviour
         Vector3 pos = Vector3.zero;
         pos.y += Mathf.Sin(Time.time * _frequency) * _amplitude;
         pos.x += Mathf.Cos(Time.time * _frequency) * _amplitude * 2;
-        print(pos.y);
+        // print(pos.y);
         return pos;
     }
     
